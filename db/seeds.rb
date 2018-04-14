@@ -1,5 +1,5 @@
-# Creaete users and teams
 p 'Please wait...'
+# Creaete users and teams
 50.times.each do
   user = User.create!(
     provider: 'starladder',
@@ -12,5 +12,9 @@ p 'Please wait...'
     name: Faker::Team.name,
     logo: File.open(Rails.root + 'lib/assets/seeds_images/logo.png')
   )
+end
+# Create tournaments
+20.times.each do
+  Tournament.create(name: Faker::Company.name)
 end
 p 'Done!'

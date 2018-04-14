@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_14_163257) do
+ActiveRecord::Schema.define(version: 2018_04_14_210505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "participations", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id", "tournament_id"], name: "index_participations_on_team_id_and_tournament_id", unique: true
+    t.index ["team_id"], name: "index_participations_on_team_id"
+    t.index ["tournament_id"], name: "index_participations_on_tournament_id"
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +32,12 @@ ActiveRecord::Schema.define(version: 2018_04_14_163257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_teams_on_user_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,5 +53,7 @@ ActiveRecord::Schema.define(version: 2018_04_14_163257) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "participations", "teams"
+  add_foreign_key "participations", "tournaments"
   add_foreign_key "teams", "users"
 end
