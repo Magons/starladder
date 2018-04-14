@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  resources :teams, except: [:show]
+  root to: 'teams#index'
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 end

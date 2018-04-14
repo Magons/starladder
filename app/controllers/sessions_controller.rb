@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
       @user = User.from_omniauth(request.env['omniauth.auth'])
       session[:user_uuid] = @user.uuid
       flash[:success] = "Welcome, #{@user.nick}!"
-    rescue
+    rescue StandardError
       flash[:warning] = 'There was an error while trying to authenticate you...'
     end
     redirect_to root_path

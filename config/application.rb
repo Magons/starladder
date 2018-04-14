@@ -8,8 +8,12 @@ Bundler.require(*Rails.groups)
 
 module Starladder
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.responders.flash_keys = [:success, :danger]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

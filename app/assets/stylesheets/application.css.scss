@@ -1,3 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'bootstrap/theme';
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.page-header {
+  margin-top: 0px;
+}
+
+.teams {
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+  .name {
+    height: 38px;
+  }
+}
