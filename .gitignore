@@ -26,4 +26,5 @@
 /config/master.key
 /config/database.yml
 /config/secrets.yml
+/public
 .env
