@@ -34,3 +34,24 @@ en:
   time:
     formats:
       full: "%e %B %Y, %k:%M"
+  buttons:
+    create_team: Create Team
+    edit: Edit
+    delete: Delete
+    see_all: See all
+    leave: Leave
+    participate: Participate
+  tournaments:
+    title: Tournaments
+    table:
+      actions: Actions
+      name: Name
+      count: Count
+      participants: Participants
+  teams: 
+    title: Teams
+  layout:
+    log_in: Log in
+    log_out: Log Out
+    title: Starladder
+

@@ -1,0 +1,12 @@
+%td= tournament.name
+%td.text-center
+  %span.badge= tournament.teams.size
+%td.text-center
+  = link_to t('buttons.see_all'), tournament, class: 'btn btn-primary'
+- if current_user && current_user.team.present?
+  %td.text-center
+    - if tournament.participant?(current_user.team)
+      = link_to t('buttons.leave'), leave_tournament_path(tournament), remote: true, class: 'btn btn-danger'
+    - else
+      = link_to t('buttons.participate'), participate_tournament_path(tournament), 
+      remote: true, class: 'btn btn-primary'

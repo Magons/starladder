@@ -1,9 +1,9 @@
 .row.page-header
   .col-xs-8
-    %h2 Teams
-  - if current_user && current_user.teams.empty?
+    %h2= t('teams.title')
+  - if current_user && current_user.team.nil?
     .col-xs-2.pull-right
-      = link_to 'Create Team', new_team_path, class: 'btn btn-default mt-30'
+      = link_to t('button.create_team'), new_team_path, class: 'btn btn-default mt-30'
 .row.teams
   - @teams.each do |team|
     .col-sm-3.col-md-2.col-xs-6
@@ -17,6 +17,6 @@
             = team.owner.nick
             - if current_user == team.owner
               %span.pull-right
-                = link_to 'Edit', edit_team_path(team), class: 'btn-xs btn-primary'
-                = link_to 'Delete', team, method: :delete, data: { confirm: 'Are you sure?' }, 
+                = link_to t('button.edit'), edit_team_path(team), class: 'btn-xs btn-primary'
+                = link_to t('button.delete'), team, method: :delete, data: { confirm: 'Are you sure?' }, 
                 class: 'btn-xs btn-danger'

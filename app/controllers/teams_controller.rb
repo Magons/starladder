@@ -7,13 +7,13 @@ class TeamsController < ApplicationController
   end
 
   def new
-    @team = current_user.teams.new
+    @team = Team.new
   end
 
   def edit; end
 
   def create
-    @team = current_user.teams.create(team_params)
+    @team = current_user.create_team(team_params)
     respond_with @team, location: -> { root_path }
   end
 
@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
   end
 
   def set_team
-    @team = current_user.teams.find(params[:id])
+    @team = current_user.team
   end
 
   def team_params

@@ -1,0 +1,15 @@
+.row.page-header
+  .col-xs-8
+    %h2 Participants
+.row.teams
+  - @teams.each do |team|
+    .col-sm-3.col-md-2.col-xs-6
+      .thumbnail
+        - if team.logo.url
+          = image_tag team.logo.url, class: 'img-rounded logo'
+        .caption
+          %h4.name= team.name
+          %p.text-muted.small= l team.created_at, format: :full 
+          %p.text-muted.small
+            = team.owner.nick
+        

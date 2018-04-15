@@ -1,25 +1,15 @@
-%h2 Tournaments
+%h2= t('tournaments.title')
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr.info
-        %th Name
-        %th Count
-        %th Paticipants
-        - if current_user && current_user.teams.present?
-          %th.text-center.thin-column= 'Actions'
+        %th= t('tournaments.table.name')
+        %th.thin-column= t('tournaments.table.count')
+        %th.thin-column= t('tournaments.table.participants')
+        - if current_user && current_user.team.present?
+          %th.text-center.thin-column= t('tournaments.table.actions')
     %tbody
       - @tournaments.each do |tournament|
-        %tr
-          %td= tournament.name
-          %td.text-center
-            %span.badge= tournament.participations.count
-          %td.text-center
-            = link_to 'See all', tournament, class: 'btn btn-primary'
-          - if current_user && current_user.teams.present?
-            %td.text-center
-              - if tournament.teams.where(id: current_user.teams.first.id).present?
-                = link_to 'Leave', tournament, class: 'btn btn-danger'
-              - else
-                = link_to 'Participate', tournament, class: 'btn btn-primary'
+        %tr{ id: "tournament_row_#{tournament.id}" }
+          = render 'tournament_row', tournament: tournament
       
